@@ -13,6 +13,9 @@ namespace m3l
     class M3L_API RenderWindow : public EPWindow, public Window, public RenderTarget2D, public RenderTarget3D
     {
         public:
+            using RenderTarget2D::draw;
+            using RenderTarget3D::draw;
+
             RenderWindow(ThreadPool &_tp, uint32_t _x, uint32_t _y, const std::string &_title);
             ~RenderWindow() = default;
 
