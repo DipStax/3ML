@@ -91,7 +91,7 @@ namespace m3l
     void RenderTarget2D::clear(const Color &_clr)
     {
         uint32_t clr = CLR(_clr);
-        size_t size = getSize().x * getSize().y * m_bpp;
+        size_t size = getSize().x * getSize().y * (m_bpp / 8);
 
         for (size_t it = 0; it < size; it += sizeof(uint32_t))
             std::memcpy(m_data + it, &clr, sizeof(uint32_t));
@@ -173,6 +173,6 @@ namespace m3l
     {
         uint32_t clr = CLR(_clr);
 
-        std::memcpy(m_data + (_pos.y * getSize().x + _pos.x * static_cast<uint32_t>(m_bpp / 8)), &clr, sizeof(uint32_t));
+        std::memcpy(m_data + (_pos.y * getSize().x + _pos.x) * static_cast<uint32_t>(m_bpp / 8), &clr, sizeof(uint32_t));
     }
 }

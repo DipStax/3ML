@@ -4,7 +4,7 @@ namespace m3l
 {
     void Transformable::setPosition(float _x, float _y)
     {
-        m_pos.y = _x;
+        m_pos.x = _x;
         m_pos.y = _y;
         m_update = true;
     }

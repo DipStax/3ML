@@ -12,7 +12,6 @@ int main()
     texture.load("ressources/texture.bmp");
     sprite.setTexture(texture);
     sprite.setPosition(20.f, 50.f);
-
     while (window.isOpen()) {
         while (window.pollEvent(event)) {}
         window.clear();

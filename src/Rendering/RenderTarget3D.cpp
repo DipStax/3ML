@@ -58,7 +58,7 @@ namespace m3l
         bmi.bmiHeader.biWidth = _x;
         bmi.bmiHeader.biHeight = -static_cast<int32_t>(_y);
         bmi.bmiHeader.biPlanes = 1;
-        bmi.bmiHeader.biBitCount = 32;
+        bmi.bmiHeader.biBitCount = m_bpp;
         bmi.bmiHeader.biCompression = BI_RGB;
         if (m_dib)
             DeleteObject(m_dib);
@@ -71,7 +71,7 @@ namespace m3l
     void RenderTarget3D::clear(const Color &_clr)
     {
         uint32_t clr = CLR(_clr);
-        size_t size = getSize().x * getSize().y * m_bpp;
+        size_t size = getSize().x * getSize().y * (m_bpp / 8);
 
         for (size_t it = 0; it < size; it += sizeof(uint32_t))
             std::memcpy(m_data + it, &clr, sizeof(uint32_t));
@@ -142,6 +142,6 @@ namespace m3l
         uint32_t clr = CLR(_clr);
 
         m_depth[pos] = _depth;
-        std::memcpy(m_data + (pos * static_cast<uint32_t>(m_bpp / 8)), &clr, sizeof(uint32_t));
+        std::memcpy(m_data + (_pos.y * getSize().x + _pos.x) * static_cast<uint32_t>(m_bpp / 8), &clr, sizeof(uint32_t));
     }
 }
