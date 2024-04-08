@@ -58,12 +58,13 @@ namespace m3l
         bmi.bmiHeader.biBitCount = RenderTarget2D::getBpp();
         bmi.bmiHeader.biCompression = BI_RGB;
         for (size_t it = 0; it < size.x * size.y; it++) {
-            if (CLR_GET_ALPHA(data2d[it]) == 0 || CLR_GET_RGB(data2d[it]) == 0)
+            // alpha is broken
+            if (CLR_GET_ALPHA(data2d[it]) == 0)
                 data[it] = data3d[it];
             else
                 data[it] = data2d[it];
         }
-        SetDIBitsToDevice(_draw, 0, 0, size.x, size.y, 0, 0, 0, size.y, data2d, &bmi, DIB_RGB_COLORS);
+        SetDIBitsToDevice(_draw, 0, 0, size.x, size.y, 0, 0, 0, size.y, data.data(), &bmi, DIB_RGB_COLORS);
     }
 
     void RenderWindow::onResize(Event _event)
