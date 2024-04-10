@@ -3,10 +3,10 @@
 
 namespace m3l
 {
-    std::vector<std::array<Vertex, 3>> polyTri(const Vertex *_vtx, size_t _size)
+    std::vector<std::array<Vertex2D, 3>> polyTri(const Vertex2D *_vtx, size_t _size)
     {
-        std::vector<std::array<Vertex, 3>> res;
-        CircleList<Vertex> cl;
+        std::vector<std::array<Vertex2D, 3>> res;
+        CircleList<Vertex2D> cl;
 
         for (size_t it = 0; it < _size; it++)
             cl.push_back(_vtx[it]);
@@ -22,7 +22,7 @@ namespace m3l
         return res;
     }
 
-    Point2<uint32_t> triRange(const Vertex *_vtx, int32_t _line)
+    Point2<uint32_t> triRange(const Vertex2D *_vtx, int32_t _line)
     {
         Point2<float> res;
         bool first = false;
@@ -87,7 +87,7 @@ namespace m3l
 
     namespace priv
     {
-        bool isEarTip(const CircleList<Vertex> &_cl, int32_t _start)
+        bool isEarTip(const CircleList<Vertex2D> &_cl, int32_t _start)
         {
             float size = area(_cl[_start - 1].pos, _cl[_start].pos, _cl[_start + 1].pos);
             float inside = 0;

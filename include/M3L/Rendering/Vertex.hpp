@@ -5,7 +5,7 @@
 
 namespace m3l
 {
-    struct M3L_API Vertex
+    struct M3L_API Vertex2D
     {
         Point2<float> pos;
         Point2<float> txtrPos;

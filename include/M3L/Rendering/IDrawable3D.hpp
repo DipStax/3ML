@@ -4,13 +4,13 @@
 
 namespace m3l
 {
-    class RenderTarget;
+    class RenderTarget3D;
 
     class IDrawable3D
     {
         protected:
-            friend class RenderTarget;
+            friend class RenderTarget3D;
 
-            virtual void draw(RenderTarget &_target, const Texture *_txtr) const = 0;
+            virtual void draw(RenderTarget3D &_target, const Texture *_txtr) const = 0;
     };
 }

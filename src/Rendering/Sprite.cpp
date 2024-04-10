@@ -1,5 +1,5 @@
 #include "M3L/Rendering/Sprite.hpp"
-#include "M3L/Rendering/RenderTarget.hpp"
+#include "M3L/Rendering/RenderTarget2D.hpp"
 
 namespace m3l
 {
@@ -26,7 +26,7 @@ namespace m3l
         return m_rect;
     }
 
-    void Sprite::draw(RenderTarget &_target, const Texture *_txtr) const
+    void Sprite::draw(RenderTarget2D &_target, const Texture *_txtr) const
     {
         std::ignore = _txtr;
 

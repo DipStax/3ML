@@ -3,11 +3,11 @@
 #include <vector>
 
 #include "M3L/Rendering/Vertex.hpp"
-#include "M3L/Rendering/IDrawable.hpp"
+#include "M3L/Rendering/IDrawable2D.hpp"
 
 namespace m3l
 {
-    class M3L_API VertexArray : public IDrawable
+    class M3L_API VertexArray : public IDrawable2D
     {
         public:
             enum class Type
@@ -25,22 +25,22 @@ namespace m3l
             [[nodiscard]] Type getType() const;
 
             void resize(size_t _n);
-            void append(const Vertex &_px);
+            void append(const Vertex2D &_px);
 
             [[nodiscard]] size_t size() const;
 
-            [[nodiscard]] Vertex &operator[](size_t _idx);
+            [[nodiscard]] Vertex2D &operator[](size_t _idx);
 
-            [[nodiscard]] Vertex *data();
-            [[nodiscard]] const Vertex *data() const;
+            [[nodiscard]] Vertex2D *data();
+            [[nodiscard]] const Vertex2D *data() const;
 
             void clear();
 
         protected:
-            void draw(RenderTarget &_target, const Texture *_txtr) const;
+            void draw(RenderTarget2D &_target, const Texture *_txtr) const;
 
         private:
-            std::vector<Vertex> m_pos;
+            std::vector<Vertex2D> m_pos;
             Type m_type = Type::Point;
     };
 }

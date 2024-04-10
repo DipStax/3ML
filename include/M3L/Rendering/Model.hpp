@@ -23,7 +23,7 @@ namespace m3l
             void setTexture(Texture _txtr);
 
         protected:
-            void draw(RenderTarget &_target, const Texture *_txtr) const;
+            void draw(RenderTarget3D &_target, const Texture *_txtr) const;
 
         private:
             using FnParsing = void (Model::*)(const std::string &);

@@ -1,7 +1,7 @@
 #include <fstream>
 
 #include "M3L/Rendering/Model.hpp"
-#include "M3L/Rendering/RenderTarget.hpp"
+#include "M3L/Rendering/RenderTarget3D.hpp"
 #include "Tool/Splitter.hpp"
 
 namespace m3l
@@ -40,7 +40,7 @@ namespace m3l
         m_txtr = _txtr;
     }
 
-    void Model::draw(RenderTarget& _target, const Texture* _txtr) const
+    void Model::draw(RenderTarget3D &_target, const Texture* _txtr) const
     {
         std::ignore = _txtr;
 

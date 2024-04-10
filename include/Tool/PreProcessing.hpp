@@ -335,8 +335,6 @@ namespace imp
     };
 }
 
-#pragma region Operator concept
-
 template<class T, class _T>
 concept AssignOp = requires (T r, _T l)
 {
@@ -528,5 +526,3 @@ concept PostDecOp = requires (T r)
 {
     --r;
 };
-
-#pragma endregion

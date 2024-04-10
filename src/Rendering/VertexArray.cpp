@@ -1,4 +1,4 @@
-#include "M3L/Rendering/RenderTarget.hpp"
+#include "M3L/Rendering/RenderTarget2D.hpp"
 #include "M3L/Rendering/VertexArray.hpp"
 
 namespace m3l
@@ -23,7 +23,7 @@ namespace m3l
         m_pos.resize(_n);
     }
 
-    void VertexArray::append(const Vertex &_px)
+    void VertexArray::append(const Vertex2D &_px)
     {
         m_pos.emplace_back(_px);
     }
@@ -33,17 +33,17 @@ namespace m3l
         return m_pos.size();
     }
 
-    Vertex &VertexArray::operator[](size_t _idx)
+    Vertex2D &VertexArray::operator[](size_t _idx)
     {
         return m_pos[_idx];
     }
 
-    Vertex *VertexArray::data()
+    Vertex2D *VertexArray::data()
     {
         return m_pos.data();
     }
 
-    const Vertex *VertexArray::data() const
+    const Vertex2D *VertexArray::data() const
     {
         return m_pos.data();
     }
@@ -53,7 +53,7 @@ namespace m3l
         m_pos.clear();
     }
 
-    void VertexArray::draw(RenderTarget &_target, const Texture *_txtr) const
+    void VertexArray::draw(RenderTarget2D &_target, const Texture *_txtr) const
     {
         if (!m_pos.empty()) {
             if (_txtr)
