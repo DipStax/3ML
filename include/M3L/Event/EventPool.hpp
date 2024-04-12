@@ -13,7 +13,7 @@ namespace m3l
         public:
             EventPool(ThreadPool &_tp);
             EventPool(EventPool<Ts...> &&_ep) noexcept;
-            ~EventPool() = default;
+            virtual ~EventPool() = default;
 
             template<class T>
             requires ContainIn<T, Ts...>
