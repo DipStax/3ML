@@ -1,7 +1,7 @@
 #include <cstring>
 
 #include "M3L/Maths/Maths.hpp"
-#include "M3L/Rendering/RenderTarget3D.hpp"
+#include "M3L/Rendering/Target/RenderTarget3D.hpp"
 #include "M3L/Rendering/PolyTri.hpp"
 
 namespace m3l

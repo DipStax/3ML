@@ -19,7 +19,7 @@ namespace m3l
     {
         public:
             Window(uint32_t _x, uint32_t _y, const std::string& _title);
-            ~Window();
+            virtual ~Window();
 
             void open(uint32_t _x, uint32_t _y, const std::string& _title);
             [[nodiscard]] bool isOpen() const;

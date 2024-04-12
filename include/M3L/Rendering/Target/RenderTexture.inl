@@ -1,4 +1,4 @@
-#include "M3L/Rendering/RenderTexture.hpp"
+#include "M3L/Rendering/Target/RenderTexture.hpp"
 
 namespace m3l
 {
