@@ -1,4 +1,4 @@
-#include "M3L/Rendering/RenderWindow.hpp"
+#include "M3L/Rendering/Target/RenderWindow.hpp"
 #include "M3L/Rendering/Model.hpp"
 
 int main()

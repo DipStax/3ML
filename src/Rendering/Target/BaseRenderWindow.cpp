@@ -1,4 +1,4 @@
-#include "M3L/Rendering/BaseRenderWindow.hpp"
+#include "M3L/Rendering/Target/BaseRenderWindow.hpp"
 
 namespace m3l
 {

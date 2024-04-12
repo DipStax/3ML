@@ -1,5 +1,5 @@
 #include "M3L/Rendering/Sprite.hpp"
-#include "M3L/Rendering/RenderTarget2D.hpp"
+#include "M3L/Rendering/Target/RenderTarget2D.hpp"
 
 namespace m3l
 {

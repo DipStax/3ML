@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include "M3L/Rendering/RenderTarget2D.hpp"
+#include "M3L/Rendering/Target/RenderTarget2D.hpp"
 #include "M3L/Rendering/PolyTri.hpp"
 #include "M3L/Maths/Maths.hpp"
 

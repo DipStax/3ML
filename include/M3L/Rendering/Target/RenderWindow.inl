@@ -1,13 +1,12 @@
 
-#include "M3L/Rendering/RenderWindow.hpp"
+#include "M3L/Rendering/Target/RenderWindow.hpp"
 
 namespace m3l
 {
     namespace imp
     {
-        template<>
         EnableSysEvent<true>::EnableSysEvent(ThreadPool &_tp)
-            : m_tp(_tp)
+            : EPWindow(_tp)
         {
         }
     }
@@ -15,14 +14,14 @@ namespace m3l
     template<bool E>
     RenderWindow<E>::RenderWindow(ThreadPool &_tp, uint32_t _x, uint32_t _y, const std::string &_title)
         requires (E)
-        : EnableSysEvent<E>(_tp), BaseRenderWindow(_x, _y, _title)
+        : imp::EnableSysEvent<E>(_tp), BaseRenderWindow(_x, _y, _title)
     {
     }
 
     template<bool E>
     RenderWindow<E>::RenderWindow(uint32_t _x, uint32_t _y, const std::string &_title)
         requires (!E)
-        : BaseRenderWindow(_x, _y, _title)
+        : imp::EnableSysEvent<E>(), BaseRenderWindow(_x, _y, _title)
     {
     }
 
@@ -42,7 +41,7 @@ namespace m3l
 
         getCamera().setSize(static_cast<float>(resize.width), static_cast<float>(resize.height));
         create(resize.width, resize.height, getCamera());
-        if constexpr (E)
+        if constexpr (!E)
             raise<Event::Resize>(resize);
         m_event.push(_event);
     }

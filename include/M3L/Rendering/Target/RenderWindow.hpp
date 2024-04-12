@@ -2,7 +2,7 @@
 
 #include "M3L/Event/Event.hpp"
 #include "M3L/Event/EventPool.hpp"
-#include "M3L/Rendering/BaseRenderWindow.hpp"
+#include "M3L/Rendering/Target/BaseRenderWindow.hpp"
 
 namespace m3l
 {
@@ -11,13 +11,14 @@ namespace m3l
     namespace imp
     {
         template<bool>
-        class M3L_API EnableSysEvent;
+        class EnableSysEvent;
 
         template<>
         class M3L_API EnableSysEvent<true> : public EPWindow
         {
-            EnableSysEvent(ThreadPool &_tp);
-            virtual ~EnableSysEvent() = default;
+            public:
+                explicit EnableSysEvent(ThreadPool &_tp);
+                virtual ~EnableSysEvent() = default;
         };
 
         template<>
@@ -46,4 +47,4 @@ namespace m3l
     };
 }
 
-#include "M3L/Rendering/RenderWindow.inl"
+#include "M3L/Rendering/Target/RenderWindow.inl"
