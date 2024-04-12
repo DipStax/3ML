@@ -1,5 +1,6 @@
 #include <exception>
 #include <map>
+#include <iostream>
 
 #include "M3L/Rendering/Image.hpp"
 
@@ -31,8 +32,10 @@ namespace m3l
         size_t size = _size.x * _size.y * (_bpp / 8);
 
         m_bpp = _bpp;
-        if (m_bmp != NULL)
+        if (m_bmp != NULL) {
+            m_bmp = NULL;
             DeleteObject(m_bmp);
+        }
         m_pxl.resize(size);
         for (size_t it = 0; it < size; it++)
             m_pxl[it] = _data[it];
@@ -69,7 +72,7 @@ namespace m3l
         bmpInfo.bmiHeader.biCompression = BI_RGB;
         m_size = { static_cast<uint32_t>(bmp.bmWidth), static_cast<uint32_t>(bmp.bmHeight) };
         m_bpp = bmp.bmBitsPixel;
-        m_pxl.resize(m_size.x * m_size.y * m_bpp); // correct calculatation of bpp (32)
+        m_pxl.resize(m_size.x * m_size.y * (m_bpp / 8));
         GetDIBits(hdc, m_bmp, 0, bmp.bmHeight, m_pxl.data(), &bmpInfo, DIB_RGB_COLORS);
         DeleteDC(hdc);
     }

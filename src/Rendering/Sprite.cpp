@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "M3L/Rendering/Sprite.hpp"
 #include "M3L/Rendering/RenderTarget2D.hpp"
 
@@ -51,9 +53,9 @@ namespace m3l
         {
             m_vertex.clear();
             m_vertex.append({ m_rect.pos, { 0, 0 } });
-            m_vertex.append({ { m_rect.pos.x + m_rect.size.x, m_rect.pos.y }, { m_rect.size.x, 0 } });
-            m_vertex.append({ m_rect.pos + m_rect.size, m_rect.size });
-            m_vertex.append({ { m_rect.pos.x, m_rect.pos.y + m_rect.size.y }, { 0, m_rect.size.y } });
+            m_vertex.append({ { m_rect.pos.x + m_rect.size.x, m_rect.pos.y }, { std::max(m_rect.size.x - 1, 0.f), 0 } });
+            m_vertex.append({ m_rect.pos + m_rect.size, { std::max(m_rect.size.x - 1, 0.f), std::max(m_rect.size.y - 1, 0.f) } });
+            m_vertex.append({ { m_rect.pos.x, m_rect.pos.y + m_rect.size.y }, { 0, std::max(m_rect.size.y - 1, 0.f) } });
         }
     }
 }
