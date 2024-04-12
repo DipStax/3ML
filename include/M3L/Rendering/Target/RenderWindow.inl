@@ -42,31 +42,31 @@ namespace m3l
         getCamera().setSize(static_cast<float>(resize.width), static_cast<float>(resize.height));
         create(resize.width, resize.height, getCamera());
         if constexpr (!E)
-            raise<Event::Resize>(resize);
+            this->template raise<Event::Resize>(resize);
         m_event.push(_event);
     }
 
     template<bool E>
     void RenderWindow<E>::onMouseButtonEvent(Event _event)
     {
-        if constexpr (E)
-            raise<Event::MouseButton>(std::get<Event::MouseButton>(_event.event));
+        if constexpr (!E)
+            this->template raise<Event::MouseButton>(std::get<Event::MouseButton>(_event.event));
         m_event.push(_event);
     }
 
     template<bool E>
     void RenderWindow<E>::onMouseMove(Event _event)
     {
-        if constexpr (E)
-            raise<Event::MouseMove>(std::get<Event::MouseMove>(_event.event));
+        if constexpr (E == true)
+            this->template raise<Event::MouseMove>(std::get<Event::MouseMove>(_event.event));
         m_event.push(_event);
     }
 
     template<bool E>
     void RenderWindow<E>::onKeyboardEvent(Event _event)
     {
-        if constexpr (E)
-            raise<Event::Keyboard>(std::get<Event::Keyboard>(_event.event));
+        if constexpr (E == true)
+            this->template raise<Event::Keyboard>(std::get<Event::Keyboard>(_event.event));
         m_event.push(_event);
     }
 
@@ -74,7 +74,7 @@ namespace m3l
     void RenderWindow<E>::onFocus(Event _event)
     {
         if constexpr (E)
-            raise<Event::Focus>(std::get<Event::Focus>(_event.event));
+            this->template raise<Event::Focus>(std::get<Event::Focus>(_event.event));
         m_event.push(_event);
     }
 }
