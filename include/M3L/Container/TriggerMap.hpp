@@ -5,8 +5,8 @@
 #include <map>
 #include <cstddef>
 
-#include "M3L/System/ThreadPool.hpp"
-#include "Tool/PreProcessing.hpp"
+#include "M3L/Core/ThreadPool.hpp"
+#include "M3L/Tool/PreProcessing.hpp"
 
 namespace m3l
 {

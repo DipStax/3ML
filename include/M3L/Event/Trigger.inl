@@ -1,5 +1,5 @@
 #include "M3L/Event/Trigger.hpp"
-#include "M3L/System/ThreadPool.hpp"
+#include "M3L/Core/ThreadPool.hpp"
 
 namespace m3l
 {

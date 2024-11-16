@@ -1,4 +1,4 @@
-#include "M3L/System/Mouse.hpp"
+#include "M3L/Core/Mouse.hpp"
 
 namespace m3l
 {

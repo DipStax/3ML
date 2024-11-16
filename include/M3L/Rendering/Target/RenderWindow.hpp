@@ -11,7 +11,7 @@ namespace m3l
     namespace imp
     {
         template<bool>
-        class EnableSysEvent;
+        class M3L_API EnableSysEvent;
 
         template<>
         class M3L_API EnableSysEvent<true> : public EPWindow
@@ -26,7 +26,7 @@ namespace m3l
     }
 
     template<bool E = true>
-    class RenderWindow : public imp::EnableSysEvent<E>, public BaseRenderWindow
+    class M3L_API RenderWindow : public imp::EnableSysEvent<E>, public BaseRenderWindow
     {
         public:
             RenderWindow(ThreadPool &_tp, uint32_t _x, uint32_t _y, const std::string &_title) requires (E);

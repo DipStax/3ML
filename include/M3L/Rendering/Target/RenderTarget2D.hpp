@@ -38,6 +38,6 @@ namespace m3l
 
             HBITMAP m_dib = nullptr;
             uint8_t *m_data = nullptr;
-            uint8_t m_bpp;
+            uint8_t m_bpp = 0;
     };
 }

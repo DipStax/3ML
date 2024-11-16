@@ -2,7 +2,7 @@
 
 #include "M3L/Rendering/Model.hpp"
 #include "M3L/Rendering/Target/RenderTarget3D.hpp"
-#include "Tool/Splitter.hpp"
+#include "M3L/Tool/Splitter.hpp"
 
 namespace m3l
 {

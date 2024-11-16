@@ -3,8 +3,8 @@
 #include <Windows.h>
 #include <windowsx.h>
 
-#include "M3L/System/Key.hpp"
-#include "M3L/System/Window.hpp"
+#include "M3L/Core/Key.hpp"
+#include "M3L/Core/Window.hpp"
 
 namespace Win
 {

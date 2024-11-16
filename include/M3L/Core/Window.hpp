@@ -15,6 +15,8 @@
 
 namespace m3l
 {
+    static constexpr char WIN_className[] = "Sample Window Class";
+
     class M3L_API Window
     {
         public:
@@ -57,8 +59,6 @@ namespace m3l
             static LRESULT CALLBACK WIN_proc(HWND _win, UINT _msg, WPARAM _wparam, LPARAM _lparam);
 
             bool messageKeyBoard(UINT _msg, WPARAM _wparam, LPARAM _lparam);
-
-            static constexpr char WIN_className[] = "Sample Window Class";
 
             [[nodiscard]] HDC getDc() const;
 

@@ -4,7 +4,7 @@
 int main()
 {
     m3l::ThreadPool tp;
-    m3l::RenderWindow window(tp, 300, 300, "title");
+    m3l::RenderWindow<true> window(tp, 300, 300, "title");
     m3l::Event event;
     m3l::Texture texture;
     m3l::Sprite sprite;

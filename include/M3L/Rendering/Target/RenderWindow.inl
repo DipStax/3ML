@@ -1,4 +1,3 @@
-
 #include "M3L/Rendering/Target/RenderWindow.hpp"
 
 namespace m3l
@@ -12,15 +11,13 @@ namespace m3l
     }
 
     template<bool E>
-    RenderWindow<E>::RenderWindow(ThreadPool &_tp, uint32_t _x, uint32_t _y, const std::string &_title)
-        requires (E)
+    RenderWindow<E>::RenderWindow(ThreadPool &_tp, uint32_t _x, uint32_t _y, const std::string &_title) requires (E)
         : imp::EnableSysEvent<E>(_tp), BaseRenderWindow(_x, _y, _title)
     {
     }
 
     template<bool E>
-    RenderWindow<E>::RenderWindow(uint32_t _x, uint32_t _y, const std::string &_title)
-        requires (!E)
+    RenderWindow<E>::RenderWindow(uint32_t _x, uint32_t _y, const std::string &_title) requires (!E)
         : imp::EnableSysEvent<E>(), BaseRenderWindow(_x, _y, _title)
     {
     }

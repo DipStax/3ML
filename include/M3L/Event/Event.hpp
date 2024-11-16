@@ -2,8 +2,8 @@
 
 #include <variant>
 
-#include "M3L/System/Mouse.hpp"
-#include "M3L/System/Key.hpp"
+#include "M3L/Core/Mouse.hpp"
+#include "M3L/Core/Key.hpp"
 
 namespace m3l
 {

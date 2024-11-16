@@ -38,10 +38,10 @@ namespace m3l
 
             void setPixel(const Point2<uint32_t> &_pos, Color _clr, float _depth);
 
-            Camera m_cam;
-            HBITMAP m_dib;
-            std::vector<float> m_depth;
+            Camera m_cam{};
+            HBITMAP m_dib = NULL;
+            std::vector<float> m_depth{};
             uint8_t *m_data = nullptr;
-            uint8_t m_bpp;
+            uint8_t m_bpp = 0;
     };
 }

@@ -29,7 +29,7 @@ namespace m3l
             void facBmp(const std::string &_path);
 
             HBITMAP m_bmp = NULL;
-            uint8_t m_bpp;
+            uint8_t m_bpp = 0;
             std::vector<uint8_t> m_pxl;
             Point2<uint32_t> m_size = { 0, 0 };
     };

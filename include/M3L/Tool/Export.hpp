@@ -16,7 +16,6 @@
 #endif
 
 #if defined(MMML_EXPORTS)
-
     #define M3L_API M3L_API_EXPORT
 #else
     #define M3L_API M3L_API_IMPORT

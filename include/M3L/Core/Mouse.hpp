@@ -3,7 +3,7 @@
 #include <windows.h>
 
 #include "M3L/Maths/Point2.hpp"
-#include "Tool/Export.hpp"
+#include "M3L/Tool/Export.hpp"
 
 namespace m3l
 {
