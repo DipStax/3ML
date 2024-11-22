@@ -13,6 +13,9 @@
         #define M3L_API_EXPORT __attribute__((__visibility__("default")))
         #define M3L_API_IMPORT __attribute__((__visibility__("default")))
     #endif
+#else
+    #define M3L_API_EXPORT
+    #define M3L_API_IMPORT
 #endif
 
 #if defined(MMML_EXPORTS)

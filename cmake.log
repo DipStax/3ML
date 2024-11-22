@@ -1,0 +1,65 @@
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.19045.
+-- [info] (create_module) | Container: Creating module...
+-- [info] (create_module_interface) | Container: Created INTERFACE module
+-- [verbose] (create_module_interface) | Container: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/Container/CircleList.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Container/TriggerMap.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Container/tsQueue.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Container/CircleList.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/Container/TriggerMap.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/Container/tsQueue.inl
+-- [info] (create_module_interface) | Container: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/Container
+-- [info] (create_module) | Maths: Creating module...
+-- [info] (create_module_interface) | Maths: Created INTERFACE module
+-- [verbose] (create_module_interface) | Maths: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Maths.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Matrix.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Point2.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Point3.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Maths.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Matrix.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Point2.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/Maths/Point3.inl
+-- [info] (create_module_interface) | Maths: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/Maths
+-- [info] (create_module) | M3L_Tool: Creating module...
+-- [info] (create_module_standalone) | M3L_Tool_SA: Created STATIC module
+-- [verbose] (create_module_standalone) | M3L_Tool_SA: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Tool/Export.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Tool/PreProcessing.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Tool/Splitter.hpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Tool/Splitter.cpp
+-- [info] (create_module_standalone) | M3L_Tool_SA: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Tool
+-- [verbose] (link_module) | M3L_Tool: Linking 2 module(s)
+-- [info] (link_module) | M3L_Tool: Linking M3L_Tool_SA PRIVATE Maths;Container
+-- [info] (create_module) | M3L_Core: Creating module...
+-- [info] (create_module_standalone) | M3L_Core_SA: Created STATIC module
+-- [verbose] (create_module_standalone) | M3L_Core_SA: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Core/Key.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Core/Mouse.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Core/ThreadPool.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Core/Window.hpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Core/Key.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Core/Mouse.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Core/ThreadPool.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Core/Window.cpp
+-- [info] (create_module_standalone) | M3L_Core_SA: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Core
+-- [info] (create_module_shared) | M3L_Core: Created SHARED module
+-- [info] (create_module_shared) | M3L_Core: Linked static submodule: M3L_Core_SA
+-- [info] (create_module_shared) | M3L_Core: MMML_EXPORTS defined
+-- [verbose] (link_module) | M3L_Core: Linking 1 module(s)
+-- [info] (link_module) | M3L_Core: Linking M3L_Core_SA PRIVATE M3L_Tool
+-- [info] (create_module) | M3L_Event: Creating module...
+-- [info] (create_module_standalone) | M3L_Event_SA: Created STATIC module
+-- [verbose] (create_module_standalone) | M3L_Event_SA: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/Event.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/EventPool.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/Property.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/Trigger.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/EventPool.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/Property.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event/Trigger.inl
+-- [info] (create_module_standalone) | M3L_Event_SA: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Event
+-- [info] (create_module_shared) | M3L_Event: Created SHARED module
+-- [info] (create_module_shared) | M3L_Event: Linked static submodule: M3L_Event_SA
+-- [info] (create_module_shared) | M3L_Event: MMML_EXPORTS defined
+-- [verbose] (link_module) | M3L_Event: Linking 1 module(s)
+-- [info] (link_module) | M3L_Event: Linking M3L_Event_SA PUBLIC M3L_Core
+-- [info] (create_module) | M3L_Rendering: Creating module...
+-- [info] (create_module_standalone) | M3L_Rendering_SA: Created STATIC module
+-- [verbose] (create_module_standalone) | M3L_Rendering_SA: Source file: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Camera.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Color.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/IDrawable2D.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/IDrawable3D.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Image.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Model.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/PolyTri.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Rect.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Sprite.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/BaseRenderWindow.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderTarget2D.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderTarget3D.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderTexture.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderWindow.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Texture.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Transformable.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Vertex.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/VertexArray.hpp;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderTexture.inl;C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering/Target/RenderWindow.inl;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Camera.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Color.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Image.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Model.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/PolyTri.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Sprite.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Target/BaseRenderWindow.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Target/RenderTarget2D.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Target/RenderTarget3D.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/Transformable.cpp;C:/Users/DipStax/Serious code/M3L/src/M3L.Rendering/VertexArray.cpp
+-- [info] (create_module_standalone) | M3L_Rendering_SA: Add include directory: C:/Users/DipStax/Serious code/M3L/include/M3L/M3L.Rendering
+-- [info] (create_module_shared) | M3L_Rendering: Created SHARED module
+-- [info] (create_module_shared) | M3L_Rendering: Linked static submodule: M3L_Rendering_SA
+-- [info] (create_module_shared) | M3L_Rendering: MMML_EXPORTS defined
+-- [verbose] (link_module) | M3L_Rendering: Linking 1 module(s)
+-- [info] (link_module) | M3L_Rendering: Linking M3L_Rendering_SA PUBLIC M3L_Core
+-- Configuring done (0.1s)
+CMake Error at cmake/Modulev2.cmake:67 (add_library):
+  No SOURCES given to target: M3L_Core
+Call Stack (most recent call first):
+  cmake/Modulev2.cmake:102 (create_module_shared)
+  CMakeLists.txt:40 (create_module)
+
+
+CMake Error at cmake/Modulev2.cmake:67 (add_library):
+  No SOURCES given to target: M3LEvent
+Call Stack (m_ost recent call first):
+  cmake/Modulev2.cmake:102 (create_module_shared)
+  CMakeLists.txt:46 (create_module)
+
+
+CMake Error at cmake/Modulev2.cmake:67 (add_library):
+  No SOURCES given to target: M3L_Rendering
+Call Stack (most recent call first):
+  cmake/Modulev2.cmake:102 (create_module_shared)
+  CMakeLists.txt:52 (create_module)
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
