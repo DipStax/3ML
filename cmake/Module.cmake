@@ -1,6 +1,10 @@
 cmake_policy(SET CMP0054 NEW)
 cmake_policy(SET CMP0076 NEW)
 
+
+
+
+
 function (module_add_source module_name module_path access m3l_subdir)
     message ("[Function] | Lib ${module_name} > Macro launch: ${module_name} ${module_path} ${access} ${m3l_subdir}")
 
@@ -109,8 +113,8 @@ function (create_library_module module_name)
         if ("${dft_build}" STREQUAL "STATIC")
             message ("Lib ${module_name} > Setup - Defining export flag: ${dft_access} - MMML_STATIC")
             target_compile_definitions(${module_name} ${dft_access} MMML_STATIC)
-        endif ()
-        if ("${dft_export}" STREQUAL "True")
+            target_compile_definitions(${module_name} ${dft_access} MMML_EXPORTS)
+        elseif ("${dft_export}" STREQUAL "True")
             message ("Lib ${module_name} > Setup - Defining ${dft_access} - MMML_EXPORTS flag from argument")
             target_compile_definitions(${module_name} ${dft_access} MMML_EXPORTS)
         endif()

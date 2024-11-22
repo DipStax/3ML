@@ -1,0 +1,31 @@
+function (setup_log project_name function)
+    set_property(GLOBAL PROPERTY LOG_CALLER_NAME ${function})
+    set_property(GLOBAL PROPERTY LOG_PROJECT_NAME ${project_name})
+endfunction()
+
+function (internal_log level message)
+    get_property(log_function GLOBAL PROPERTY LOG_CALLER_NAME)
+
+    set (cmake_level STATUS)
+    if ("${level}" STREQUAL "verb")
+        set (cmake_level VERBOSE)
+    elseif ("${level}" STREQUAL "debug")
+        set (cmake_level DEBUG)
+    elseif ("${level}" STREQUAL "info")
+        set (cmake_level STATUS)
+    elseif ("${level}" STREQUAL "warn")
+        set (cmake_level WARNING)
+    elseif ("${level}" STREQUAL "error")
+        set (cmake_level SEND_ERROR)
+    elseif ("${level}" STREQUAL "fatal")
+        set (cmake_level SEND_ERROR)
+    endif ()
+
+    message (${cmake_level} "[${level}] (${log_function}) | ${message}")
+endfunction ()
+
+function (log level message)
+    get_property(log_project GLOBAL PROPERTY LOG_PROJECT_NAME)
+
+    internal_log (${level} "${log_project}: ${message}")
+endfunction ()
