@@ -1,7 +1,9 @@
 cmake_minimum_required (VERSION 3.10)
 
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-include (cmake/Modulev2.cmake)
+set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+
+# set (CMAKE_MESSAGE_LOG_LEVEL debug)
 
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,98 +14,53 @@ add_compile_options (/Wall /W3 /EHsc)
 
 project(M3L)
 
-if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-    message ("Setting build type to 'Debug' as none was specified.")
-    set (CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
-    # Set the possible values of build type for cmake-gui
-    set_property (CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
-endif ()
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 
 add_compile_definitions (NOMINMAX)
 
 set (M3L_ROOT_DIR "${PROJECT_SOURCE_DIR}")
 
-create_module (Container interface ${M3L_ROOT_DIR})
-create_module (Maths interface ${M3L_ROOT_DIR})
+include (cmake/m3l.cmake)
 
-create_module (M3L_Tool standalone ${M3L_ROOT_DIR})
-link_module (M3L_Tool
-    interface
-        Maths
-        Container
+m3l_create_project (M3L_Container INTERFACE)
+m3l_create_project (M3L_Event INTERFACE)
+m3l_create_project (M3L_Maths INTERFACE)
+
+add_library (M3L_itfgroup INTERFACE)
+
+target_link_libraries (M3L_itfgroup
+    INTERFACE
+        M3L_Container
+        M3L_Event
+        M3L_Maths
 )
 
-create_module (M3L_Core shared ${M3L_ROOT_DIR})
-link_module (M3L_Core
-    standalone
-        M3L_Tool
+m3l_create_project (M3L_Tool LIBRARY STATIC)
+
+m3l_create_project (M3L_Core LIBRARY SHARED)
+
+target_link_libraries (M3L_Core
+    INTERFACE
+        M3L_itfgroup
 )
 
-create_module (M3L_Event shared ${M3L_ROOT_DIR})
-link_module (M3L_Event
-    shared
+m3l_create_project (M3L_Rendering LIBRARY SHARED)
+
+target_link_libraries (M3L_Rendering
+    PUBLIC
         M3L_Core
 )
 
-create_module (M3L_Rendering shared ${M3L_ROOT_DIR})
-link_module (M3L_Rendering
-    shared
-        M3L_Core
-)
-
-
-
-
-
-# create_library_module (Container INTERFACE)
-
-# create_library_module (Maths INTERFACE)
-
-# create_library_module (Tool STATIC)
-# target_link_libraries (Tool
-#     PRIVATE
-#         Container
-#         Maths
+# target_link_libraries (M3L_Rendering
+#     SHARED
+#         M3L_Core
 # )
 
-# create_library_module (Core)
-# target_link_libraries (Core
-#     PRIVATE
-#         Tool
-# )
+# m3l_create_project (M3L_2DRender M3L_BIN_DEMO)
 
-# create_library_module (Event)
-# target_link_libraries (Event
-#     PRIVATE
-#         Core
-# )
-
-# create_library_module (Rendering)
-# target_link_libraries (Rendering
-#     PRIVATE
-#         Core
-# )
-
-# set (DEMO_DIRECTORY "${PROJECT_SOURCE_DIR}/demo")
-
-# create_app_module (2DRender ${DEMO_DIRECTORY})
-# target_link_libraries (2DRender
-#     PRIVATE
-#         Rendering
-# )
-
-# create_app_module (3DRender ${DEMO_DIRECTORY})
-# target_link_libraries (3DRender
-#     PRIVATE
-#         Rendering
-# )
-
-# create_app_module (SysEvent ${DEMO_DIRECTORY})
-# target_link_libraries (SysEvent
-#     PRIVATE
-#         Event
+# target_link_libraries (M3L_Rendering
+#     SHARED
+#         M3L_Core
 # )

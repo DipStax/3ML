@@ -6,9 +6,15 @@ Stand for **M**y **M**ulti**M**edia **L**ibrary
 
 The goal of this project is to create a cross platform (_linux_ and _Windows_) multimedia library that will go across those topic (for now):
 
+### Cmake:
+
+- CMake project
+- CMake customisation
+
 ### System:
 
-- Device event (keyboard, mouse...)
+- System event (keyboard, screen,...)
+- C++ User System friendly API
 
 ### Graphics:
 
@@ -18,9 +24,11 @@ The goal of this project is to create a cross platform (_linux_ and _Windows_) m
 
 ### Network:
 
-- TCP communication
-- UDP communication
+- Socket communication
+- Network event
+- Network synchronisation
 
 ### Audio:
 
-- Load and play audio
+- Audio load and play
+- Audio creation
