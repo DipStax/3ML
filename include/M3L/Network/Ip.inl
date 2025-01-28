@@ -10,25 +10,29 @@ namespace m3l::net
     }
 
     template<IsBaseIpFormat T>
-    void Ip<T>::set(const Ip<T>::RawContainer _raw)
+    void Ip<T>::set(const RawContainer _raw)
     {
         m_raw = _raw;
     }
 
     template<IsBaseIpFormat T>
-    void Ip<T>::set(const std::string _ip)
+    void Ip<T>::set(const std::string &_ip)
     {
-        // todo parsings
+        uint8_t shift = 0;
+
+        split::multiple(_ip, '.') | std::views::for_each([] (const std::string _val) {
+            m_raw |= static_cast<RawContainer>(_bytes) << (shift++ * 8);
+        });
     }
 
     template<IsBaseIpFormat T>
     template<class ...Ts>
     requires IsByteIpFormat<T, Ts...>
-    void Ip<T>::set(const Ts ..._bytes)
+    constexpr void Ip<T>::set(const Ts ..._bytes)
     {
-        uint8t_t shift = 0;
+        uint8_t shift = 0;
 
-        ((m_raw |= (static_cast<uint32_t>(_bytes) << (shift++ * 8))), ...);
+        ((m_raw |= (static_cast<RawContainer>(_bytes) << (shift++ * 8))), ...);
     }
 
     template<IsBaseIpFormat T>

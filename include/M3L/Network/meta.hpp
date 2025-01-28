@@ -39,8 +39,8 @@ namespace m3l
             } && sizeof(typename T::Container) >= T::size;
 
         template<class T>
-        concept IsBaseIp = (std::same_as<T, m3l::net::ip::v4> || std::same_as<T, m3l::net::ip::v6>)
-            && IsBaseIpFormat<T>; // template property propagation
+        concept IsBaseIp = (std::same_as<T, m3l::net::ip::v4> || std::same_as<T, m3l::net::ip::v6>);
+            //&& IsBaseIpFormat<T>; // template property propagation
 
         template<class T, class ...Ts>
         concept IsByteIpFormat = IsBaseIpFormat<T> && (sizeof...(Ts) == T::size || (std::is_convertible_v<Ts, uint8_t> && ...));

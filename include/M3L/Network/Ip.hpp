@@ -40,7 +40,7 @@ namespace m3l::net
 
             template<class ...Ts>
             requires IsByteIpFormat<T, Ts...>;
-            void set(const Ts ..._bytes);
+            constexpr void set(const Ts ..._bytes);
 
             [[nodiscard]] constexpr RawContainer raw() const;
             [[nodiscard]] std::string str() const;

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "M3L/Network/Ip.hpp"
 #include "M3L/Network/CSocket.hpp"
 
 #ifndef M3L_NET_LISTEN_MAX
@@ -9,48 +8,19 @@
 
 namespace m3l::net
 {
-    template<IsBaseIp T, m3l::net::prot _T>
-    class Acceptor
+    template<IsBaseIp T, prot _T>
+    class Acceptor : public BasicSocket<T, _T>
     {
         public:
-            Acceptor(Ip<T> _ip, uint32_t _port = 0)
-                : m_socket(c::Socket::create<T, _T>())
-            {
-            }
+            using BasicSocketType = BasicSocket<T, _T>;
 
-            Acceptor(Ip<T> _ip, uint32_t _port = 0)
-                : Acceptor()
-            {
-                connect(_ip, _port)
-            }
+            Acceptor() = default;
+            Acceptor(Ip<T> _ip, uint32_t _port = 0);
 
-            bool connect(Ip<T> _ip, uint32_t _port = 0)
-            {
-                extstd::Expected<sockaddr_in, int> error = c::Socket::bind<Ip<T>>(m_socket, _ip, _port);
+            bool bind(Ip<T> _ip, uint32_t _port = 0);
 
-                if (error)
-                    return false;
-                m_addr = error.result();
-                if (_port == 0) {
+            bool listen(int _max = std::max(SOMAXCONN, M3L_NET_LISTEN_MAX));
 
-                }
-                return true;
-            }
-
-            bool listen(int _max = meta::Max<SOMAXCONN, M3L_NET_LISTEN_MAX>::value)
-            {
-                if (m_addr.sin_port == 0)
-                    return false;
-                return ::listen(m_socket, _max) == 0;
-            }
-
-        private:
-            sockaddr_in m_addr;
-            WIN_SOCKET m_socket;
+            BasicSocketType accept();
     };
 }
-
-auto a = m3l::net::Acceptor<
-        m3l::net::ip::v4,
-        m3l::net::prot::TCP
-    >{};

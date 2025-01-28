@@ -28,7 +28,7 @@ namespace m3l::net
             [[nodiscard]] static constexpr WIN_SOCKET create(int _dom, int _type, int _proto);
 
             template<IsIpFormat T>
-            static extstd::Expected<sockaddr_in, int> bind(WIN_SOCKET _socket, const T &_ip, uint32_t _port);
+            [[nodiscard]] static extstd::Expected<sockaddr_in, int> bind(WIN_SOCKET _socket, const T &_ip, uint32_t _port);
 
             /// @brief Set a file descriptor as blocking or not.
             /// @param _socket File descriptor to modify
@@ -44,3 +44,5 @@ namespace m3l::net
         };
     }
 }
+
+#include "M3L/Network/CSocket.inl"
