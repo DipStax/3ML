@@ -9,6 +9,18 @@
 template<class T>
 using UniqueTypeTuple = std::tuple<T>;
 
+namespace m3l::meta
+{
+    template<int L, int R>
+    struct Max
+    {
+        requires L > R
+        static constexpr value = L;
+        requires R >= L
+        static constexpr value = R;
+    };
+}
+
 namespace imp
 {
     template<size_t I, class T, class ...Ts>
@@ -271,7 +283,7 @@ template<class T>
 concept NumericType = std::is_arithmetic<T>::value;
 
 template<class T>
-concept IsUnsigned = std::unsigned_integral<T>;
+concept IsUInt = std::unsigned_integral<T>;
 
 template<class T>
 concept IsSigned = std::signed_integral<T>;
