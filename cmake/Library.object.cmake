@@ -1,29 +1,46 @@
-function (m3l_link_library_itf proj_name proj_real_name lib_obj)
-    setup_log (${lib_obj} ${CMAKE_CURRENT_FUNCTION})
+function (m3l_create_library_itf lib_itf)
+    setup_log (${lib_itf} ${CMAKE_CURRENT_FUNCTION})
 
     set (args ${ARGN})
-
+    
+    log (info "Creating interface library: ${lib_itf}")
+    add_library (${lib_itf} INTERFACE)
     log (info "Link with configuration: ${args}")
-    target_link_libraries (${lib_obj}
+    target_link_libraries (${lib_itf}
         INTERFACE
-            ${args}
+            M3L_STATIC_LIBRARY
     )
+    get_target_property(obj_cd M3L_STATIC_LIBRARY COMPILE_DEFINITIONS)
+    get_target_property(itf_cd M3L_STATIC_LIBRARY INTERFACE_COMPILE_DEFINITIONS)
+    log (info "library compile definition: M3L_STATIC_LIBRARY ${itf_cd} <> ${obj_cd}")
+    get_target_property(obj_cd ${lib_itf} COMPILE_DEFINITIONS)
+    get_target_property(itf_cd ${lib_itf} INTERFACE_COMPILE_DEFINITIONS)
+    log (info "library compile definition: ${itf_cd} <> ${obj_cd}")
 
     if ("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
-        log (info "Link with Realse configuration")
-        target_link_libraries (${lib_obj}
+        log (debug "Link with Release configuration")
+        target_link_libraries (${lib_itf}
             INTERFACE
                 M3L_RELEASE_GLOBAL
         )
-    elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "debug")
-        log (info "Link with debug configuration")
-        target_link_libraries (${lib_obj}
+    elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        log (debug "Link with Debug configuration")
+        target_link_libraries (${lib_itf}
             INTERFACE
-                M3L_debug_GLOBAL
+                M3L_DEBUG_GLOBAL
         )
     else ()
-        # error
+        log (error "Build type not supported: ${CMAKE_BUILD_TYPE}")
     endif ()
+
+    target_include_directories(${lib_itf}
+        INTERFACE
+            ${PROJECT_SOURCE_DIR}/include
+    )
+    log (info "Interface use include directory: ${PROJECT_SOURCE_DIR}/include")
+
+
+    pop_log()
 endfunction ()
 
 function (m3l_create_library_obj proj_name proj_real_name lib_obj)
@@ -45,4 +62,6 @@ function (m3l_create_library_obj proj_name proj_real_name lib_obj)
         OBJECT
             "${project_source}"
     )
+
+    pop_log()
 endfunction ()

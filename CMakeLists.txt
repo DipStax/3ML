@@ -24,43 +24,38 @@ set (M3L_ROOT_DIR "${PROJECT_SOURCE_DIR}")
 
 include (cmake/m3l.cmake)
 
-m3l_create_project (M3L_Container INTERFACE)
-m3l_create_project (M3L_Event INTERFACE)
-m3l_create_project (M3L_Maths INTERFACE)
+# m3l_create_project (M3L_Container INTERFACE)
+# m3l_create_project (M3L_Event INTERFACE)
+# m3l_create_project (M3L_Maths INTERFACE)
 
-add_library (M3L_itfgroup INTERFACE)
+# add_library (M3L_itfgroup INTERFACE)
 
-target_link_libraries (M3L_itfgroup
-    INTERFACE
-        M3L_Container
-        M3L_Event
-        M3L_Maths
-)
+# target_link_libraries (M3L_itfgroup
+#     INTERFACE
+#         M3L_Container
+#         M3L_Event
+#         M3L_Maths
+# )
 
 m3l_create_project (M3L_Tool LIBRARY STATIC)
 
-m3l_create_project (M3L_Core LIBRARY SHARED)
+# m3l_create_project (M3L_Core LIBRARY SHARED)
 
-target_link_libraries (M3L_Core
-    INTERFACE
-        M3L_itfgroup
-)
+# target_link_libraries (M3L_Core
+#     INTERFACE
+#         M3L_itfgroup
+# )
 
-m3l_create_project (M3L_Rendering LIBRARY SHARED)
-
-target_link_libraries (M3L_Rendering
-    PUBLIC
-        M3L_Core
-)
+# m3l_create_project (M3L_Rendering LIBRARY SHARED)
 
 # target_link_libraries (M3L_Rendering
-#     SHARED
+#     PUBLIC
 #         M3L_Core
 # )
 
-# m3l_create_project (M3L_2DRender M3L_BIN_DEMO)
+# m3l_create_project (M3L_2DRender DEMO)
 
-# target_link_libraries (M3L_Rendering
+# target_link_libraries (M3L_2DRender
 #     SHARED
-#         M3L_Core
+#         M3L_2DRender
 # )
